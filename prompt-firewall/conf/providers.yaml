@@ -1,0 +1,7 @@
+providers:
+  openai:
+    base_url: "https://api.openai.com/v1"
+    timeout_sec: 10
+  ollama:
+    base_url: "http://localhost:11434/v1"
+    timeout_sec: 20

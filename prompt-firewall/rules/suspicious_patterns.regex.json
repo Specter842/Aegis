@@ -1,0 +1,16 @@
+[
+    {"pattern": "ignore\\s+(all\\s+)?(previous|prior|above)\\s+(instructions|prompts|rules)", "type": "prompt_injection", "severity": "critical", "name": "Direct Instruction Override"},
+    {"pattern": "you\\s+are\\s+(now\\s+)?(DAN|evil|unrestricted|jailbroken)", "type": "jailbreak", "severity": "critical", "name": "Persona Hijack (DAN)"},
+    {"pattern": "pretend\\s+(you\\s+)?(are|can|have|don't\\s+have)", "type": "jailbreak", "severity": "high", "name": "Persona Manipulation"},
+    {"pattern": "system\\s*prompt|initial\\s*instructions|reveal\\s*(your)?\\s*prompt", "type": "prompt_extraction", "severity": "high", "name": "System Prompt Extraction"},
+    {"pattern": "bypass|override|disable\\s*(your)?\\s*(safety|filter|guardrail|restriction)", "type": "guardrail_bypass", "severity": "critical", "name": "Safety Bypass Attempt"},
+    {"pattern": "execute\\s*(this)?\\s*(code|command|script)|run\\s*(this)?\\s*(shell|bash|cmd)", "type": "code_execution", "severity": "critical", "name": "Code Execution Injection"},
+    {"pattern": "delete\\s*(all)?\\s*(files|data|database)|drop\\s+table|rm\\s+-rf", "type": "destructive_action", "severity": "critical", "name": "Destructive Action Attempt"},
+    {"pattern": "\\b(password|secret|api[_\\s]?key|token|credential|private[_\\s]?key)\\b", "type": "data_exfiltration", "severity": "high", "name": "Credential Exfiltration"},
+    {"pattern": "act\\s+as\\s+(a|an|my)\\s+(admin|root|superuser|administrator)", "type": "privilege_escalation", "severity": "critical", "name": "Privilege Escalation"},
+    {"pattern": "forget\\s+(everything|all|what)|reset\\s+(your|context|memory)", "type": "memory_poisoning", "severity": "high", "name": "Memory Wipe Attempt"},
+    {"pattern": "\\[system\\]|\\[INST\\]|<\\|system\\|>|<<SYS>>|<s>\\[INST\\]", "type": "prompt_injection", "severity": "critical", "name": "Token Injection Attack"},
+    {"pattern": "hypothetically|in\\s+a\\s+fictional\\s+scenario|for\\s+(a\\s+)?(novel|story|research)", "type": "jailbreak", "severity": "medium", "name": "Hypothetical Bypass"},
+    {"pattern": "sudo|chmod|chown|wget\\s+http|curl\\s+http", "type": "code_execution", "severity": "high", "name": "System Command Injection"},
+    {"pattern": "tool_call|function_call|<tool>|<function>", "type": "tool_manipulation", "severity": "critical", "name": "Direct Tool Manipulation"}
+]

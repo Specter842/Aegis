@@ -1,0 +1,12 @@
+/* ===== Layout Overrides — Dashboard Section ===== */
+/* All base layout is now in globals.css. This file handles edge cases. */
+
+/* Ensure dashboard section doesn't scroll internally when hero is present */
+.dashboard-section .dashboard {
+  height: 100vh;
+}
+
+/* Smooth section transitions */
+.dashboard-section {
+  scroll-snap-align: start;
+}

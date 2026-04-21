@@ -1,0 +1,8 @@
+output_policy:
+  thresholds:
+    canary_leak: "block"
+    secret_leak: "block"
+    pii_leak: "redact"
+    high_risk: "block"
+    medium_risk: "truncate"
+    low_risk: "allow"
