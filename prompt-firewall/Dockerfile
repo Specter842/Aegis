@@ -27,4 +27,4 @@ COPY . .
 EXPOSE 8000
 
 # Run migrations and start app
-CMD ["bash", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+CMD ["bash", "-c", "alembic upgrade head || true && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
