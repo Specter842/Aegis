@@ -1,0 +1,44 @@
+databases:
+  - name: aegis-db
+    databaseName: aegis_db
+    user: aegis
+    plan: free
+
+services:
+  - type: web
+    name: aegis-api
+    runtime: docker
+    dockerfilePath: ./prompt-firewall/Dockerfile
+    dockerContext: ./prompt-firewall
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: aegis-db
+          property: connectionString
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ENABLE_LLM_GUARD
+        value: "false"
+      - key: LLM_GUARD_READINESS_MODE
+        value: degraded
+      - key: WS_MAX_CONNECTIONS
+        value: "10"
+      - key: WS_HEARTBEAT_INTERVAL
+        value: "30"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.0-flash
+
+  - type: web
+    name: aegis-frontend
+    runtime: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        value: https://aegis-api.onrender.com
