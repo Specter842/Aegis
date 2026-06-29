@@ -47,7 +47,7 @@ const MAX_RECENT_EVENTS = 100;
  * In production, the backend URL can be overridden via env var.
  */
 function getWsUrl() {
-  const apiUrl = import.meta.env.VITE_API_URL || '';
+  const apiUrl = 'https://aegis-api.onrender.com';
   if (apiUrl) {
     return apiUrl.replace('https://', 'wss://').replace('http://', 'ws://') + '/ws/aegis';
   }

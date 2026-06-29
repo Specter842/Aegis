@@ -5,7 +5,7 @@
  * Used for historical incident retrieval and other non-realtime data needs.
  */
 
-const API_BASE = (import.meta.env.VITE_API_URL || '') + '/v1';
+const API_BASE = 'https://aegis-api.onrender.com/v1';
 
 /**
  * Fetch incidents from the backend.
@@ -50,7 +50,7 @@ export async function fetchIncidents({ limit = 50, decision, attackType, minRisk
  */
 export async function fetchHealth() {
   try {
-    const response = await fetch((import.meta.env.VITE_API_URL || '') + '/health');
+    const response = await fetch('https://aegis-api.onrender.com/health');
     if (!response.ok) return null;
     return await response.json();
   } catch (error) {
@@ -66,7 +66,7 @@ export async function fetchHealth() {
  */
 export async function fetchReadiness() {
   try {
-    const response = await fetch((import.meta.env.VITE_API_URL || '') + '/ready');
+    const response = await fetch('https://aegis-api.onrender.com/ready');
     if (!response.ok) return null;
     return await response.json();
   } catch (error) {
