@@ -1,35 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite"
+import react from "@vitejs/plugin-react"
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  server: { host: true, allowedHosts: "all" },
   server: {
+    host: true,
     allowedHosts: "all",
     proxy: {
-      // REST API routes
-      '/api': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-      },
-      '/v1': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-      },
-      '/health': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-      },
-      '/ready': {
-        target: 'http://localhost:8000',
-        changeOrigin: true,
-      },
-      // WebSocket route
-      '/ws': {
-        target: 'ws://localhost:8000',
-        ws: true,
-      },
+      "/api": { target: "https://aegis-api.onrender.com", changeOrigin: true },
+      "/v1": { target: "https://aegis-api.onrender.com", changeOrigin: true },
+      "/health": { target: "https://aegis-api.onrender.com", changeOrigin: true },
+      "/ready": { target: "https://aegis-api.onrender.com", changeOrigin: true },
+      "/ws": { target: "wss://aegis-api.onrender.com", ws: true },
     },
   },
 })
