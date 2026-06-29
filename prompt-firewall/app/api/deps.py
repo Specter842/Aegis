@@ -111,3 +111,7 @@ def get_routing_service(
         requests_repo=requests_repo,
         event_service=event_service
     )
+
+
+# Alias for compatibility
+get_db = get_db_session
