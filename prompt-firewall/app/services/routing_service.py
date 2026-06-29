@@ -7,9 +7,6 @@ from app.services.output_scan_service import OutputScanService
 from app.services.event_service import EventService
 from app.providers.base import ProviderException
 from app.providers.openai_provider import OpenAIProvider
-from app.providers.gemini_provider import GeminiProvider
-from app.providers.gemini_provider import GeminiProvider
-from app.providers.gemini_provider import GeminiProvider
 from app.db.repositories.output_repo import OutputRepo
 from app.db.repositories.requests_repo import RequestsRepo
 from app.db.models import OutputScanModel
@@ -33,10 +30,6 @@ class RoutingService:
     async def _get_provider(self, target_provider: str):
         if target_provider == "openai":
             return OpenAIProvider()
-        if target_provider == "gemini":
-            return GeminiProvider()
-        if target_provider == "gemini":
-            return GeminiProvider()
         raise ProviderException("config_failure", f"Unknown provider: {target_provider}")
 
     async def _get_request_fk(self, trace_id: str) -> int:
