@@ -29,10 +29,6 @@ from app.scanners.static.yara_scanner import YaraScanner
 from app.scanners.static.unicode_scanner import UnicodeScanner
 from app.scanners.static.encoded_text_scanner import EncodedTextScanner
 
-from app.scanners.llm_guard.prompt_injection import LLMGuardPromptInjection
-from app.scanners.llm_guard.secrets import LLMGuardSecrets
-from app.scanners.llm_guard.invisible_text import LLMGuardInvisibleText
-from app.scanners.llm_guard.token_limit import LLMGuardTokenLimit
 
 log = get_logger("aegis")
 
@@ -49,10 +45,6 @@ async def lifespan(app: FastAPI):
     registry.register(UnicodeScanner())
     registry.register(EncodedTextScanner())
     
-    registry.register(LLMGuardPromptInjection())
-    registry.register(LLMGuardSecrets())
-    registry.register(LLMGuardInvisibleText())
-    registry.register(LLMGuardTokenLimit())
     
     # Phase 1 services
     readiness_service = ReadinessService(registry)
